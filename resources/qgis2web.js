@@ -9,7 +9,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-35952.992952, 6704054.085617, -5743.478023, 6721742.828016], map.getSize());
+map.getView().fit([-29048.834683, 6705580.521917, -13965.085226, 6714424.893117], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -466,7 +466,7 @@ var Abstract = new ol.control.Control({
 
         var linkElement = document.createElement('a');
 
-        if (356 > 240) {
+        if (382 > 240) {
             linkElement.setAttribute("onmouseenter", "showAbstract()");
             linkElement.setAttribute("onmouseleave", "hideAbstract()");
             linkElement.innerHTML = 'i';
@@ -480,13 +480,13 @@ var Abstract = new ol.control.Control({
             window.showAbstract = function() {
                 linkElement.classList.remove("project-abstract");
                 linkElement.classList.add("project-abstract-uncollapsed");
-                linkElement.innerHTML = 'Cost for build - £39,230.00<br />Moving Over:<br />8 Core Joints<br />79 FWDP\'s<br />240 Existing Customers<br />Project UPRN\'s - 7298<br />UPRN\'s within 250M (ATCF) - 7019<br />Freeing up:<br />MAY/TK1/SP3 - 2 PORTS<br />MAY/TK1/SP4 - 2 PORTS<br />MAY/TK1/SP10 - 4 PORTS<br />MAY/TK1/SP10-1 - 2 PORTS<br />MAY/TK1/SP10A - 2 PORTS<br />MAY/TK1/SP10B - 1 PORT<br />MAY/TK1/SP10C - 1 PORT<br />MAY/TK1/SP12 - 1 PORT<br />TOTAL - 15 PORTS<br />';
+                linkElement.innerHTML = 'Cost for build - £112,708.20<br />Moving Over:<br />8 Core Joints<br />79 FWDP\'s<br />Project UPRN\'s - 7298<br />UPRN\'s within 250M (ATCF) - 7019<br />240 Existing Customers<br /><br />Additional UPRN\'s - 242<br />Freeing up:<br />MAY/TK1/SP3 - 2 PORTS<br />MAY/TK1/SP4 - 2 PORTS<br />MAY/TK1/SP10 - 4 PORTS<br />MAY/TK1/SP10-1 - 2 PORTS<br />MAY/TK1/SP10A - 2 PORTS<br />MAY/TK1/SP10B - 1 PORT<br />MAY/TK1/SP10C - 1 PORT<br />MAY/TK1/SP12 - 1 PORT<br />TOTAL - 15 PORTS<br />';
             }
 
             hideAbstract();
         } else {
             linkElement.classList.add("project-abstract-uncollapsed");
-            linkElement.innerHTML = 'Cost for build - £39,230.00<br />Moving Over:<br />8 Core Joints<br />79 FWDP\'s<br />240 Existing Customers<br />Project UPRN\'s - 7298<br />UPRN\'s within 250M (ATCF) - 7019<br />Freeing up:<br />MAY/TK1/SP3 - 2 PORTS<br />MAY/TK1/SP4 - 2 PORTS<br />MAY/TK1/SP10 - 4 PORTS<br />MAY/TK1/SP10-1 - 2 PORTS<br />MAY/TK1/SP10A - 2 PORTS<br />MAY/TK1/SP10B - 1 PORT<br />MAY/TK1/SP10C - 1 PORT<br />MAY/TK1/SP12 - 1 PORT<br />TOTAL - 15 PORTS<br />';
+            linkElement.innerHTML = 'Cost for build - £112,708.20<br />Moving Over:<br />8 Core Joints<br />79 FWDP\'s<br />Project UPRN\'s - 7298<br />UPRN\'s within 250M (ATCF) - 7019<br />240 Existing Customers<br /><br />Additional UPRN\'s - 242<br />Freeing up:<br />MAY/TK1/SP3 - 2 PORTS<br />MAY/TK1/SP4 - 2 PORTS<br />MAY/TK1/SP10 - 4 PORTS<br />MAY/TK1/SP10-1 - 2 PORTS<br />MAY/TK1/SP10A - 2 PORTS<br />MAY/TK1/SP10B - 1 PORT<br />MAY/TK1/SP10C - 1 PORT<br />MAY/TK1/SP12 - 1 PORT<br />TOTAL - 15 PORTS<br />';
         }
 
         titleElement.appendChild(linkElement);

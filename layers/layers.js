@@ -103,6 +103,21 @@ var lyr_MayfairAbsorbed_6 = new ol.layer.Vector({
                 interactive: false,
                 title: '<img src="styles/legend/MayfairAbsorbed_6.png" /> Mayfair - Absorbed'
             });
+var format_apex1cpd_7 = new ol.format.GeoJSON();
+var features_apex1cpd_7 = format_apex1cpd_7.readFeatures(json_apex1cpd_7, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_apex1cpd_7 = new ol.source.Vector({
+    attributions: ' ',
+});
+jsonSource_apex1cpd_7.addFeatures(features_apex1cpd_7);
+var lyr_apex1cpd_7 = new ol.layer.Vector({
+                declutter: false,
+                source:jsonSource_apex1cpd_7, 
+                style: style_apex1cpd_7,
+                popuplayertitle: 'apex(1) — cpd',
+                interactive: true,
+                title: 'apex(1) — cpd'
+            });
 var group_Mayfair = new ol.layer.Group({
                                 layers: [lyr_MayfairCable_3,lyr_MayfairJoints_4,],
                                 fold: 'open',
@@ -112,26 +127,29 @@ var group_Hammersmith = new ol.layer.Group({
                                 fold: 'close',
                                 title: 'Hammersmith'});
 
-lyr_OSMStandard_0.setVisible(true);lyr_HammersmithCable_1.setVisible(true);lyr_HammersmithJoints_2.setVisible(true);lyr_MayfairCable_3.setVisible(true);lyr_MayfairJoints_4.setVisible(true);lyr_HammersmithMayfairCable_5.setVisible(true);lyr_MayfairAbsorbed_6.setVisible(true);
-var layersList = [lyr_OSMStandard_0,group_Hammersmith,group_Mayfair,lyr_HammersmithMayfairCable_5,lyr_MayfairAbsorbed_6];
+lyr_OSMStandard_0.setVisible(true);lyr_HammersmithCable_1.setVisible(true);lyr_HammersmithJoints_2.setVisible(true);lyr_MayfairCable_3.setVisible(true);lyr_MayfairJoints_4.setVisible(true);lyr_HammersmithMayfairCable_5.setVisible(true);lyr_MayfairAbsorbed_6.setVisible(true);lyr_apex1cpd_7.setVisible(true);
+var layersList = [lyr_OSMStandard_0,group_Hammersmith,group_Mayfair,lyr_HammersmithMayfairCable_5,lyr_MayfairAbsorbed_6,lyr_apex1cpd_7];
 lyr_HammersmithCable_1.set('fieldAliases', {'Name': 'Name', 'description': 'description', 'timestamp': 'timestamp', 'begin': 'begin', 'end': 'end', 'altitudeMode': 'altitudeMode', 'tessellate': 'tessellate', 'extrude': 'extrude', 'visibility': 'visibility', 'drawOrder': 'drawOrder', 'icon': 'icon', });
 lyr_HammersmithJoints_2.set('fieldAliases', {'Name': 'Name', 'description': 'description', 'timestamp': 'timestamp', 'begin': 'begin', 'end': 'end', 'altitudeMode': 'altitudeMode', 'tessellate': 'tessellate', 'extrude': 'extrude', 'visibility': 'visibility', 'drawOrder': 'drawOrder', 'icon': 'icon', });
 lyr_MayfairCable_3.set('fieldAliases', {'Name': 'Name', 'description': 'description', 'timestamp': 'timestamp', 'begin': 'begin', 'end': 'end', 'altitudeMode': 'altitudeMode', 'tessellate': 'tessellate', 'extrude': 'extrude', 'visibility': 'visibility', 'drawOrder': 'drawOrder', 'icon': 'icon', });
 lyr_MayfairJoints_4.set('fieldAliases', {'Name': 'Name', 'description': 'description', 'timestamp': 'timestamp', 'begin': 'begin', 'end': 'end', 'altitudeMode': 'altitudeMode', 'tessellate': 'tessellate', 'extrude': 'extrude', 'visibility': 'visibility', 'drawOrder': 'drawOrder', 'icon': 'icon', });
 lyr_HammersmithMayfairCable_5.set('fieldAliases', {'id': 'id', });
 lyr_MayfairAbsorbed_6.set('fieldAliases', {'id': 'id', });
+lyr_apex1cpd_7.set('fieldAliases', {'Name': 'Name', 'description': 'description', 'timestamp': 'timestamp', 'begin': 'begin', 'end': 'end', 'altitudeMode': 'altitudeMode', 'tessellate': 'tessellate', 'extrude': 'extrude', 'visibility': 'visibility', 'drawOrder': 'drawOrder', 'icon': 'icon', });
 lyr_HammersmithCable_1.set('fieldImages', {'Name': 'TextEdit', 'description': 'TextEdit', 'timestamp': 'DateTime', 'begin': 'DateTime', 'end': 'DateTime', 'altitudeMode': 'TextEdit', 'tessellate': 'Range', 'extrude': 'Range', 'visibility': 'Range', 'drawOrder': 'Range', 'icon': 'TextEdit', });
 lyr_HammersmithJoints_2.set('fieldImages', {'Name': 'TextEdit', 'description': 'TextEdit', 'timestamp': 'DateTime', 'begin': 'DateTime', 'end': 'DateTime', 'altitudeMode': 'TextEdit', 'tessellate': 'Range', 'extrude': 'Range', 'visibility': 'Range', 'drawOrder': 'Range', 'icon': 'TextEdit', });
 lyr_MayfairCable_3.set('fieldImages', {'Name': 'TextEdit', 'description': 'TextEdit', 'timestamp': 'DateTime', 'begin': 'DateTime', 'end': 'DateTime', 'altitudeMode': 'TextEdit', 'tessellate': 'Range', 'extrude': 'Range', 'visibility': 'Range', 'drawOrder': 'Range', 'icon': 'TextEdit', });
 lyr_MayfairJoints_4.set('fieldImages', {'Name': 'TextEdit', 'description': 'TextEdit', 'timestamp': 'DateTime', 'begin': 'DateTime', 'end': 'DateTime', 'altitudeMode': 'TextEdit', 'tessellate': 'Range', 'extrude': 'Range', 'visibility': 'Range', 'drawOrder': 'Range', 'icon': 'TextEdit', });
 lyr_HammersmithMayfairCable_5.set('fieldImages', {'id': 'TextEdit', });
 lyr_MayfairAbsorbed_6.set('fieldImages', {'id': 'TextEdit', });
+lyr_apex1cpd_7.set('fieldImages', {'Name': '', 'description': '', 'timestamp': '', 'begin': '', 'end': '', 'altitudeMode': '', 'tessellate': '', 'extrude': '', 'visibility': '', 'drawOrder': '', 'icon': '', });
 lyr_HammersmithCable_1.set('fieldLabels', {'Name': 'no label', 'description': 'hidden field', 'timestamp': 'hidden field', 'begin': 'hidden field', 'end': 'hidden field', 'altitudeMode': 'hidden field', 'tessellate': 'hidden field', 'extrude': 'hidden field', 'visibility': 'hidden field', 'drawOrder': 'hidden field', 'icon': 'hidden field', });
 lyr_HammersmithJoints_2.set('fieldLabels', {'Name': 'no label', 'description': 'hidden field', 'timestamp': 'hidden field', 'begin': 'hidden field', 'end': 'hidden field', 'altitudeMode': 'hidden field', 'tessellate': 'hidden field', 'extrude': 'hidden field', 'visibility': 'hidden field', 'drawOrder': 'hidden field', 'icon': 'hidden field', });
 lyr_MayfairCable_3.set('fieldLabels', {'Name': 'no label', 'description': 'hidden field', 'timestamp': 'hidden field', 'begin': 'hidden field', 'end': 'hidden field', 'altitudeMode': 'hidden field', 'tessellate': 'hidden field', 'extrude': 'hidden field', 'visibility': 'hidden field', 'drawOrder': 'hidden field', 'icon': 'hidden field', });
 lyr_MayfairJoints_4.set('fieldLabels', {'Name': 'no label', 'description': 'hidden field', 'timestamp': 'hidden field', 'begin': 'hidden field', 'end': 'hidden field', 'altitudeMode': 'hidden field', 'tessellate': 'hidden field', 'extrude': 'hidden field', 'visibility': 'hidden field', 'drawOrder': 'hidden field', 'icon': 'hidden field', });
 lyr_HammersmithMayfairCable_5.set('fieldLabels', {'id': 'hidden field', });
 lyr_MayfairAbsorbed_6.set('fieldLabels', {'id': 'hidden field', });
-lyr_MayfairAbsorbed_6.on('precompose', function(evt) {
+lyr_apex1cpd_7.set('fieldLabels', {'Name': 'no label', 'description': 'no label', 'timestamp': 'no label', 'begin': 'no label', 'end': 'no label', 'altitudeMode': 'no label', 'tessellate': 'no label', 'extrude': 'no label', 'visibility': 'no label', 'drawOrder': 'no label', 'icon': 'no label', });
+lyr_apex1cpd_7.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
