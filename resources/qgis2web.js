@@ -9,7 +9,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([-29048.834683, 6705580.521917, -13965.085226, 6714424.893117], map.getSize());
+map.getView().fit([-31864.564201, 6705663.569197, -16780.814745, 6714507.940397], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -466,7 +466,7 @@ var Abstract = new ol.control.Control({
 
         var linkElement = document.createElement('a');
 
-        if (382 > 240) {
+        if (503 > 240) {
             linkElement.setAttribute("onmouseenter", "showAbstract()");
             linkElement.setAttribute("onmouseleave", "hideAbstract()");
             linkElement.innerHTML = 'i';
@@ -480,13 +480,13 @@ var Abstract = new ol.control.Control({
             window.showAbstract = function() {
                 linkElement.classList.remove("project-abstract");
                 linkElement.classList.add("project-abstract-uncollapsed");
-                linkElement.innerHTML = 'Cost for build - £112,708.20<br />Moving Over:<br />8 Core Joints<br />79 FWDP\'s<br />Project UPRN\'s - 7298<br />UPRN\'s within 250M (ATCF) - 7019<br />240 Existing Customers<br /><br />Additional UPRN\'s - 242<br />Freeing up:<br />MAY/TK1/SP3 - 2 PORTS<br />MAY/TK1/SP4 - 2 PORTS<br />MAY/TK1/SP10 - 4 PORTS<br />MAY/TK1/SP10-1 - 2 PORTS<br />MAY/TK1/SP10A - 2 PORTS<br />MAY/TK1/SP10B - 1 PORT<br />MAY/TK1/SP10C - 1 PORT<br />MAY/TK1/SP12 - 1 PORT<br />TOTAL - 15 PORTS<br />';
+                linkElement.innerHTML = 'Cost for build - £144,148.25<br /><br />Moving Over:<br />8 Core Joints<br />79 FWDP\'s<br />Project UPRN\'s - 7298<br />UPRN\'s within 250M (ATCF) - 7019<br />240 Existing Customers<br /><br />Freeing up:<br />MAY/TK1/SP3 - 2 PORTS<br />MAY/TK1/SP4 - 2 PORTS<br />MAY/TK1/SP10 - 4 PORTS<br />MAY/TK1/SP10-1 - 2 PORTS<br />MAY/TK1/SP10A - 2 PORTS<br />MAY/TK1/SP10B - 1 PORT<br />MAY/TK1/SP10C - 1 PORT<br />MAY/TK1/SP12 - 1 PORT<br />TOTAL - 15 PORTS<br /><br />Addressable Market Reached: 1763<br /><br />NOTE: The above addressable market is gained by overlaying the Hammersmith Network as per existing CB design.';
             }
 
             hideAbstract();
         } else {
             linkElement.classList.add("project-abstract-uncollapsed");
-            linkElement.innerHTML = 'Cost for build - £112,708.20<br />Moving Over:<br />8 Core Joints<br />79 FWDP\'s<br />Project UPRN\'s - 7298<br />UPRN\'s within 250M (ATCF) - 7019<br />240 Existing Customers<br /><br />Additional UPRN\'s - 242<br />Freeing up:<br />MAY/TK1/SP3 - 2 PORTS<br />MAY/TK1/SP4 - 2 PORTS<br />MAY/TK1/SP10 - 4 PORTS<br />MAY/TK1/SP10-1 - 2 PORTS<br />MAY/TK1/SP10A - 2 PORTS<br />MAY/TK1/SP10B - 1 PORT<br />MAY/TK1/SP10C - 1 PORT<br />MAY/TK1/SP12 - 1 PORT<br />TOTAL - 15 PORTS<br />';
+            linkElement.innerHTML = 'Cost for build - £144,148.25<br /><br />Moving Over:<br />8 Core Joints<br />79 FWDP\'s<br />Project UPRN\'s - 7298<br />UPRN\'s within 250M (ATCF) - 7019<br />240 Existing Customers<br /><br />Freeing up:<br />MAY/TK1/SP3 - 2 PORTS<br />MAY/TK1/SP4 - 2 PORTS<br />MAY/TK1/SP10 - 4 PORTS<br />MAY/TK1/SP10-1 - 2 PORTS<br />MAY/TK1/SP10A - 2 PORTS<br />MAY/TK1/SP10B - 1 PORT<br />MAY/TK1/SP10C - 1 PORT<br />MAY/TK1/SP12 - 1 PORT<br />TOTAL - 15 PORTS<br /><br />Addressable Market Reached: 1763<br /><br />NOTE: The above addressable market is gained by overlaying the Hammersmith Network as per existing CB design.';
         }
 
         titleElement.appendChild(linkElement);
@@ -812,11 +812,6 @@ let measuring = false;
 	}
 
 
-  function convertToFeet(length) {
-    feet_length = length * 3.2808;
-    return feet_length
-  }
-
   /**
   * format length output
   * @param {ol.geom.LineString} line
@@ -832,15 +827,15 @@ let measuring = false;
         var c2 = ol.proj.transform(coordinates[i + 1], sourceProj, 'EPSG:4326');
         length += ol.sphere.getDistance(c1, c2);
       }
-      feet_length = convertToFeet(length)
-
-      var output;
-      if (feet_length > 5280) {
-          output = (Math.round(feet_length / 5280 * 100) / 100) + ' miles';
-      } else {
-          output = (Math.round(feet_length * 100) / 100) + ' ft';
-      }
-      return output;
+    var output;
+    if (length > 100) {
+      output = (Math.round(length / 1000 * 100) / 100) +
+          ' ' + 'km';
+    } else {
+      output = (Math.round(length * 100) / 100) +
+          ' ' + 'm';
+    }
+    return output;
   };
 
   /**
@@ -848,18 +843,18 @@ let measuring = false;
   * @param {ol.geom.Polygon} polygon The polygon.
   * @return {string} Formatted area.
   */
-  var formatArea = function (polygon) {
-    var sourceProj = map.getView().getProjection();
-    var geom = polygon.clone().transform(sourceProj, 'EPSG:3857');
-    var area = Math.abs(ol.sphere.getArea(geom));
-    var output;
-    if (area > 2589988) {  // 1 sq mi in square meters
-      output = (Math.round((area / 2589988) * 1000) / 1000) + ' sq mi';
-    } else {
-      output = (Math.round(area * 10.7639 * 100) / 100) + ' sq ft';
-    }
-    return output;
-  };
+	var formatArea = function (polygon) {
+		var sourceProj = map.getView().getProjection();
+		var geom = polygon.clone().transform(sourceProj, 'EPSG:3857');
+		var area = Math.abs(ol.sphere.getArea(geom));
+		var output;
+		if (area > 1000000) {
+			output = Math.round((area / 1000000) * 1000) / 1000 + ' ' + 'km<sup>2</sup>';
+		} else {
+			output = Math.round(area * 100) / 100 + ' ' + 'm<sup>2</sup>';
+		}
+		return output.replace('.', ',');
+	};
 
   addInteraction();
 

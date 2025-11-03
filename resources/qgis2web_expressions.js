@@ -766,20 +766,7 @@ function fnc_project_color(values, context) {
 
 
 
-function exp_HammersmithJoints_2rule0_eval_expression(context) {
-    // Name LIKE '%FWDP%'
-
-    var feature = context.feature;
-    
-    if (feature.properties) {
-        return (feature.get('Name').indexOf('FWDP') > -1);
-    } else {
-        return (feature.get('Name').indexOf('FWDP') > -1);
-    }
-}
-
-
-function exp_MayfairJoints_4rule0_eval_expression(context) {
+function exp_MayfairJoints_2rule0_eval_expression(context) {
     // Name LIKE '%FWDP%'
 
     var feature = context.feature;
